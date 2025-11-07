@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "insightagent"
+version = "0.1.0"
+description = "InsightAgent Engine - marketing analytics orchestrator"
+authors = [
+  {name = "InsightAgent Team"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.4",
+  "langchain-core>=0.3.6",
+  "langgraph>=0.1.0",
+  "langchain-openai>=0.1.1",
+  "openai>=1.5.0",
+  "pandas>=2.1",
+  "numpy>=1.24"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "python-dotenv>=1.0",
+  "typer>=0.9"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["insightagent", "insightagent.*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
